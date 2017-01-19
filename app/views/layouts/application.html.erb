@@ -7,28 +7,84 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<header>
+	<header class ="nav">
 		<div class="col-xs-3">
-			<div class ="circle">
-				<br />
-				You know
-				<br />
-				you need
-				<br />
-				to code
-			</div>
+			<%= link_to root_path, class: 'logo' do %>
+				<div class ="circle">
+					<br />
+					You know
+					<br />
+					you need
+					<br />
+					to code
+				</div>
+			<% end %>
 		</div>
-		<div class="col-xs-4 slogan">
+		<div class="col-xs-4 hidden-xs slogan">
 			Splurting out unsolicited advice about entrepreneurship since 2016
 		</div>
-		<div class="col-xs-5 links">
-			<%= link_to 'Contribute', '#' %>
-			<%= link_to 'About', '#' %> 
+		<div class="col-xs-8 col-xs-offset-1 col-sm-offset-0 col-sm-5 links">
+				    <!-- Button trigger modal -->
+			<%= link_to 'Contribute', '#', data: {toggle: 'modal', target: '#myModal'} %>
+			&nbsp;&nbsp;
+			<%= link_to 'About', about_path %> 
 		</div>
 	</header>
-	<hr />
-	<br class="clear"/>
-<%= yield %>
 
+
+
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	          <h4 class="modal-title" id="myModalLabel">Contribute Your Quote</h4>
+	        </div>
+	       <%= simple_form_for Quote.new do |f| %>
+				<div class="modal-body">
+					<%= f.input :saying, label: "What is the saying you want to add?", placeholder: "Fear is the disease. Hustle is the antidote." %>
+					<br />
+					<%= f.input :author, label: "Who is the author of the quote?", placeholder: "Travis Kalanick" %>
+				</div>
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		          <%= f.submit 'Create', class: 'btn btn-danger' %>
+		        </div>
+	        <% end %>
+	      </div>
+	    </div>
+	  </div>
+	<br />
+	<br class="clear"/>
+
+	<div class="container">
+		<% if flash[:error].present? %>
+			<div class="col-xs-10 col-xs-offset-1 alert alert-danger">
+				<%= flash[:error].html_safe %>
+			</div>
+			<hr />
+		<% end %>
+
+		<%= yield %> <!-- is the index.html.erb, basically as the homepage -->
+	</div>
+
+	<div class="footer">
+		<div class="container">
+			<div class="col-xs-12 col-sm-6">
+				<%= link_to "This isn't enough, I need more.", root_path, class: 'next-quote' %>
+			</div>
+			<div class="col-xs-12 col-sm-6 footer-blurb">
+				Proudly hacked in Madison, WI <a href="http://thefirehoseproject.com">Jade Vargas</a><br />
+        		Want to build your own Splurty Web App - <a href="http://thefirehoseproject.com">Learn how to code here</a>
+        </div>
+		</div>
+	</div>
 </body>
 </html>
+
+<!-- Remember, if you want to have the ruby retrun something on the view,
+	you have to have a "<%=  %>". If you don't want Ruby to show something
+	to the user "<% %>"" is the way to go.
+
+	The routes are found by running rake routes and looking there -->

@@ -42,10 +42,12 @@
 	border-bottom: 1px solid #dfdfdf;
 	font-family: 'Marck Script', cursive;
 	font-weight: bold;
+	margin-left: 200px;
 }
 
 header {
 	border-top: 9px solid #222222;
+	background: rgba(76, 175, 80, 0.3);
 }
 
 hr {
@@ -59,4 +61,47 @@ h1 {
 
 h2 {
 	font-family: 'Marck Script', cursive;
+}
+
+.nav {
+	background: rgba(18, 38, 68, 0.3);
+}
+
+.next-quote{
+	color: #f84342;
+	font-family: 'Marck Script', cursive;
+	font-size: 20px;
+}
+
+.footer-blurb{
+	font-family: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+	font-style: italic;
+	text-align: right;
+}
+
+.logo:hover {
+	text-decoration: none;
+}
+
+.about{
+	font-family: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+}
+
+@media (max-width: 750px) {
+	.footer-blurb {
+		text-align: left; 
+	}
+}
+
+.modal {
+	font-family: 'Marck Script', cursive;
+	font-size: 20px;
+}
+
+h2 span {
+	color: #dddddd;
+}
+
+::selection {
+	background-color: #f84342;
 }
